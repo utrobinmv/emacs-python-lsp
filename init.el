@@ -39,6 +39,9 @@
 ;; plugin jfmenu
 (load-file "~/.emacs.d/jfmenu.el")
 
+;; plugin jpython-config
+(load-file "~/.emacs.d/jpython-config.el")
+
 ;;End user
 
 (custom-set-variables

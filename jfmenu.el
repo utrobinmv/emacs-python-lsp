@@ -2,8 +2,38 @@
 (define-key-after
   global-map
   [menu-bar jfmenu]
-  (cons "MyMenu" (make-sparse-keymap "hoot hoot"))
+  (cons "Addons" (make-sparse-keymap "hoot hoot"))
   'tools )
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter]
+  (cons "Jupyter" (make-sparse-keymap "")))
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter server-start]
+  '("server-start" . ein:jupyter-server-start))
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter run]
+  '("run" . ein:run))
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter server-stop]
+  '("server-stop" . ein:jupyter-server-stop))
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter new-notebook]
+  '("new-notebook" . ein:notebooklist-new-notebook))
+
+(define-key
+  global-map
+  [menu-bar jfmenu jupyter notebooklist]
+  '("notebook list" . ein:notebooklist-open))
 
 (define-key
   global-map

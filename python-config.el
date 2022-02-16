@@ -7,7 +7,7 @@
   :config
   (setq treemacs-no-png-images t
 	  treemacs-width 24)
-  :bind ("C-c t" . treemacs))
+  :bind ("<f3>" . treemacs))
 
 ;; Provide LSP-mode for python, it requires a language server.
 ;; I use `lsp-pyright`. Know that you have to `M-x lsp-restart-workspace` 
@@ -88,18 +88,18 @@
 ;; via the menu bar or with `pyvenv-workon` 
 ;; Setting the `WORKON_HOME` environment variable points 
 ;; at where the envs are located. I use miniconda. 
-;;(use-package pyvenv
-;;  :ensure t
-;;  :defer t
-;;  :config
-;;  ;; Setting work on to easily switch between environments
-;;  (setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
-;;  ;; Display virtual envs in the menu bar
-;;  (setq pyvenv-menu t)
-;;  ;; Restart the python process when switching environments
-;;  (add-hook 'pyvenv-post-activate-hooks (lambda ()
-;;					  (pyvenv-restart-python)))
-;;  :hook (python-mode . pyvenv-mode))
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Setting work on to easily switch between environments
+  (setenv "WORKON_HOME" (expand-file-name "~/.pyvenv/"))
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+					  (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode))
 
 ;; Language server for Python 
 ;; Read the docs for the different variables set in the config.
@@ -112,7 +112,7 @@
 	lsp-pyright-disable-organize-imports nil
 	lsp-pyright-auto-import-completions t
 	lsp-pyright-use-library-code-for-types t
-	lsp-pyright-venv-path "~/.pyvenv")
+	lsp-pyright-venv-path "~/.pyvenv/base")
   :hook ((python-mode . (lambda () 
                           (require 'lsp-pyright) (lsp-deferred)))))
 
